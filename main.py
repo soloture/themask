@@ -2,7 +2,7 @@
 
 from tts import downloadFile, getGoogleSpeechURL, downloadSpeechFromText, playText
 from speech_rec import speech_recognition, save_speech, speech_to_text, openAudioStream, readAudioStream, stopAudioStream
-from text_analysis import text_analysis
+from text_analysis import text_analysis, text_analysis_stutter
 from pygame.locals import *
 import pygame, pyaudio, sys
 import nltk
@@ -54,7 +54,8 @@ if __name__ == "__main__":
 		
 		if State == "STT":
 			text = speech_to_text(WAVE_OUTPUT_FILENAME)
-			final_text = text_analysis(text)
+			#final_text = text_analysis(text)
+			final_text = text_analysis_stutter(text)
 			print "Input : " + text
 			print "Output : " + final_text
 			downloadSpeechFromText(final_text,fileName)

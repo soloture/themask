@@ -99,6 +99,9 @@ def speech_to_text(filename):
 	k = []
 	for i in splitdata:
 		jsdata = json.loads(i)
-		k.append(jsdata["hypotheses"][0]["utterance"])
+		try:
+			k.append(jsdata["hypotheses"][0]["utterance"])
+		except IndexError:
+			k.append(" ")
 	jsdataoutput = " ".join(k)
 	return jsdataoutput

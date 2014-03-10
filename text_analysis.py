@@ -7,6 +7,8 @@ VBP_alt_list = ["obtain","acquire","incline toward","require","hanker","admire"]
 JJ_list = ["beautiful", "awesome","pretty","nice","good","great","broken","lost"]
 JJ_alt_list = ["exquisite", "statuesque", "pulchritudinous", "prepossessing", "stupendous", "fractured", "mislaid"]
 VBP_alt_list_melody = [(("c*",4),("e*",4),("f*",4))]
+consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','r','s','t','v','w','x','z']
+vowels = ['a','e','i','o','u','y']
 
 
 def text_analysis(text):
@@ -43,7 +45,45 @@ def text_analysis(text):
 	final_text = " ".join(tokens)
 	return final_text
 	
-def text_analysis_split(text):
+def text_analysis_stutter(text):
 	tokens = nltk.word_tokenize(text)
 	tagged = nltk.pos_tag(tokens)
+	for x in tokens:
+		two_cons = False
+		if len(x) >= 3:
+			#Checking if the word is two consonants+vowel
+			cons_counter = 0
+			for y in list(x):
+				if len(x) == 3 and y in consonants:
+					cons_counter += 1
+			if cons_counter >= 2:
+				two_cons = True
+			
+			if two_cons is not True:
+				word = list(x)[0] + list(x)[1] + x
+				tokens[tokens.index(x)] = word
+	new_tokens =[]
+	for z in tokens:
+		k = tokens.pop()
+		word = k
+		if word == "n't":
+			word = tokens.pop() + k
+		new_tokens.append(word)
+	for i in reversed(new_tokens):
+		tokens.append(i)
+	final_text = " ".join(tokens)
+	return final_text
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 	
