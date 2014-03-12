@@ -1,4 +1,5 @@
 import nltk
+import random
 
 Subject_list = ["I","this","that","these","those","it","my","mine"]
 Negative_list = ["not","n't"]
@@ -60,7 +61,23 @@ def text_analysis_stutter(text):
 				two_cons = True
 			
 			if two_cons is not True:
-				word = list(x)[0] + list(x)[1] + x
+				temp = random.triangular()
+				print "random number : " + str(temp)
+				repeat = 1
+				word = ""
+				if temp >= 0 and temp <= 0.5:
+					repeat = 1
+				if temp > 0.5 and temp <= 0.7:
+					repeat = 2
+				if temp > 0.7 and temp <= 0.8:
+					repeat = 4
+				if temp > 0.8 and temp <= 0.9:
+					repeat = 8
+				if temp > 0.9 and temp <= 1:
+					repeat = 12
+				for i in range(repeat):
+					word = list(x)[0] + list(x)[1] + word
+				word = word + x
 				tokens[tokens.index(x)] = word
 	new_tokens =[]
 	for z in tokens:

@@ -12,7 +12,7 @@ def downloadFile(url, fileName):
 	fp.close()
 
 def getGoogleSpeechURL(phrase):
-	googleTranslateURL = "http://translate.google.com/translate_tts?tl=en&"
+	googleTranslateURL = "http://translate.google.com/translate_tts?tl=fr&"
 	parameters = {'q': phrase}
 	data = urllib.urlencode(parameters)
 	googleTranslateURL = "%s%s" % (googleTranslateURL,data)
