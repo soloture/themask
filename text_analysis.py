@@ -93,7 +93,7 @@ def text_analysis_stutter(text):
 			
 			
 			
-			
+				
 			
 			
 			

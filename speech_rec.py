@@ -71,10 +71,10 @@ def save_speech(frames, p, WAVE_OUTPUT_FILENAME):
 
 def speech_to_text(filename):
 	#Convert to flac
-	os.system("flac -f "+ filename+'.wav')
-	f = open(filename+'.flac','rb')
-	flac_cont = f.read()
-	f.close()
+	#os.system("flac -f "+ filename+'.wav')
+	#f = open(filename+'.flac','rb')
+	#flac_cont = f.read()
+	#f.close()
 	"""
 	lang_code='en-US'
 	googl_speech_url = 'https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&pfilter=2&lang=%s&maxresults=6'%(lang_code)
@@ -89,7 +89,7 @@ def speech_to_text(filename):
 	"""
 	url = "www.google.com"
 	path = "/speech-api/v1/recognize?xjerr=1&client=chromium&lang=en"
-	headers = { "Content-type": "audio/x-flac; rate=44100" };
+	headers = { "Content-type": "audio/x-wave; rate=44100" };
 	params = {"xjerr": "1", "client": "chromium"}
 	conn = httplib.HTTPSConnection(url)
 	conn.request("POST", path, flac_cont, headers)

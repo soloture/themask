@@ -13,6 +13,7 @@ import nltk
 
 CHUNK_SIZE = 4098
 MIN_VOLUME = 600
+MAX_VOLUME = 3000
 # if the recording thread can't consume fast enough, the listener will start discarding
 BUF_MAX_SIZE = CHUNK_SIZE * 10
 FORMAT = pyaudio.paInt16
@@ -57,11 +58,6 @@ def main():
 			try :
 				chunk = array('h', stream.read(CHUNK_SIZE))
 				vol = max(chunk)
-				if vol <= MIN_VOLUME:
-					blank = []
-					for i in range(CHUNK_SIZE):
-						blank.append(0)
-					chunk = array('h', blank)
 				r_buffer.extend(chunk)
 				while len(r_buffer) > 44100:
 					r_buffer.pop(0)
